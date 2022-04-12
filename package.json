@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/agathakry/zkSync/issues"
   },
-  "homepage": "https://github.com/agathakry/zkSync#readme"
+  "homepage": "https://github.com/agathakry/zkSync#readme",
+  "dependencies": {
+    "ethers": "^5.6.2",
+    "zksync": "^0.12.0-alpha.6"
+  }
 }
