@@ -147,6 +147,32 @@ async function displayZkSyncBalance (wallet, ethers) {
     // declare state of account 
     const state = await wallet.getAccountState()
 
-    //
+    // add to check if balance defined (not zero)
+    if (state.committed.balances.ETH) {
+        console.log(`Commited ETH balance for ${wallet.address()}: ${ethers.utils.formatEther(state.committed.balances.ETH)}`)
+
+    } else {
+        console.log(`Commited ETH balance for ${wallet.address()}: 0`)
+    }
+
+    // check if verfied balance defined 
+    if (state.verified.balances.ETH) {
+        console.log(`Verified ETH balance for ${wallet.address()}: ${ethers.utils.formatEther(state.verified.balances.ETH)}`)
+
+    } else {
+        console.log(`Verified ETH balance for ${wallet.address()}: 0`)
+    }
+
 }
   
+module.exports = {
+    getZkSyncProvider,
+    getEthereumProvider,
+    depositToZkSync,
+    registerAccount,
+    displayZkSyncBalance,
+    transfer,
+    withdrawToEthereum,
+    getFee,
+    initAccount
+  }
