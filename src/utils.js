@@ -93,6 +93,27 @@ async function transfer (from, toAddress, amountToTransfer, transferFee, token, 
     // call closestpackable fee and convert to wei
     const closestPackableFee = zksync.utils.closestPackableTransactionFee(ethers.utils.parseEther(transferFee))
  
-    
+    // call synctranfer and store result 
+    const transfer = await from.syncTransfer({
+        to: toAddress,
+        token: token,
+        amount: closestPackableAmount,
+        fee: closestPackableFee
+       })
+    // call await receipt 
+    const transferReceipt = await transfer.awaitReceipt()
 
+    // log in transfer 
+    console.log('Got transfer receipt.')
+    console.log(transferReceipt)
   }
+
+// declare function to get the TransferFee
+async function getFee (transactionType, address, token, zkSyncProvider, ethers) {
+    // declare const fee in wei 
+    const feeInWei = await zkSyncProvider.getTransactionFee(transactionType, address, token)
+
+    // return the fee in human readable format converting to string and passing to ether 
+    return ethers.utils.formatEther(feeInWei.totalFee.toString())
+
+}
