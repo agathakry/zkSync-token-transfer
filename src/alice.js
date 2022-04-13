@@ -38,4 +38,12 @@
 
     // run the utils.transfer function 
     await utils.transfer(aliceZkSyncWallet, process.env.BOB_ADDRESS, amountToTransfer, transferFee, token, zksync, ethers)
-  })()
+  
+    console.log('Withdrawing')
+
+    // declaree const withdrawal fee to store the value and return the fee
+    const withdrawalFee = await utils.getFee('Withdraw', aliceRinkebyWallet.address, token, zkSyncProvider, ethers)
+
+    // caall async function withdrawto ethereum 
+    await utils.withdrawToEthereum(aliceZkSyncWallet, amountToWithdraw, withdrawalFee, token, zksync, ethers)
+})()
