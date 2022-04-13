@@ -117,3 +117,36 @@ async function getFee (transactionType, address, token, zkSyncProvider, ethers) 
     return ethers.utils.formatEther(feeInWei.totalFee.toString())
 
 }
+
+// function to withdraw to Ethereum 
+async function withdrawToEthereum (wallet, amountToWithdraw, withdrawalFee, token, zksync, ethers) {
+
+    // Start here
+    // call closestPackable about to withdraw
+    const closestPackableAmount = zksync.utils.closestPackableTransactionAmount(ethers.utils.parseEther(amountToWithdraw))
+  
+    // call closestPackable for fee
+    const closestPackableFee = zksync.utils.closestPackableTransactionFee(ethers.utils.parseEther(withdrawalFee))
+
+    // assign withdraw to the wallet address
+    const withdraw = await wallet.withdrawFromSyncToEthereum({
+        ethAddress: wallet.address(),
+        token: token,
+        amount: closestPackableAmount,
+        fee: closestPackableFee
+        })
+    // invoke the awaitvereifyreceipt
+    await withdraw.awaitVerifyReceipt()
+
+    console.log('ZKP verification is complete')
+  
+  }
+
+// check account balances on zksync 
+async function displayZkSyncBalance (wallet, ethers) {
+    // declare state of account 
+    const state = await wallet.getAccountState()
+
+    //
+}
+  
