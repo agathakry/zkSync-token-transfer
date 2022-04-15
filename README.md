@@ -41,5 +41,13 @@ export NETWORK_NAME=rinkeby
 export BOB_ADDRESS=<BOB_ACTUAL_ADDRESS>
 ```
 
+## Project Structure
+
+| File | Description | 
+| ----- | ---------- | 
+| [alice.js](https://github.com/agathakry/zkSync/blob/main/src/alice.js), [bob.js](https://github.com/agathakry/zkSync/blob/main/src/bob.js), [utils.js](https://github.com/agathakry/zkSync/blob/main/src/utils.js) | Set up ETH deposits to zkSync, withdrawals, transfers and check account balances | 
+| [alice_usdt.js](https://github.com/agathakry/zkSync/blob/main/src/alice_usdt.js), [bob_usdt.js](https://github.com/agathakry/zkSync/blob/main/src/bob_usdt.js), [utils_usdt.js](https://github.com/agathakry/zkSync/blob/main/src/utils_usdt.js) | Set up USDT deposits to zkSync, withdrawals, transfers and check account balances | 
+
+
 ## Security Notice
 Thsi repo is only an example, never share your private keys online. 
