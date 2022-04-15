@@ -5,7 +5,6 @@ Project built using the ZK rollup architecture zkSync for transfering ERC270 tok
 <img src=https://github.com/agathakry/zkSync/blob/main/assets/bob%20alice.jpg width="30%">
 </p>
 
-!Do not deploy on mainnet!
 
 ## Introduction 
 
@@ -50,4 +49,4 @@ export BOB_ADDRESS=<BOB_ACTUAL_ADDRESS>
 
 
 ## Security Notice
-Thsi repo is only an example, never share your private keys online. 
+Thsi repo is only an example, do not deploy on mainnet, never share your private keys online. 
