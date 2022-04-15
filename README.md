@@ -8,9 +8,11 @@ Project built using the ZK rollup architecture zkSync for transfering ERC270 tok
 !Do not deploy on mainnet!
 
 ## Introduction 
+
 <p align="center">
 <img src=https://github.com/agathakry/zkSync/blob/main/assets/zksynclogo.png width="30%">
 </p>
+
 [zkSync](https://zksync.io/) is a L2 scaling solution for the Ethereum Network in which all funds are held by smart contract on Ethereum, while computations and storage are performed off-chain. 
 
 ## Requirements 
