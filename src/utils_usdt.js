@@ -52,12 +52,13 @@ async function getZkSyncProvider (zksync, networkName) {
       console.log(error)
     }
   }
-  
-  async function transfer (from, toAddress, amountToTransfer, transferFee, token, zksync, ethers) {
+
+  // update transfer function with tokenset
+  async function transfer (from, toAddress, amountToTransfer, transferFee, token, zksync, tokenSet) {
     const closestPackableAmount = zksync.utils.closestPackableTransactionAmount(
-      ethers.utils.parseEther(amountToTransfer))
+      tokenSet.parseToken(token, amountToTransfer))
     const closestPackableFee = zksync.utils.closestPackableTransactionFee(
-      ethers.utils.parseEther(transferFee))
+      tokenSet.parseToken(token, transferFee))
   
     const transfer = await from.syncTransfer({
       to: toAddress,
@@ -89,9 +90,26 @@ async function getZkSyncProvider (zksync, networkName) {
   }
   
   // udapte the display function depending on token
-  async function displayZkSyncBalance (wallet, ethers) {
+  // On the next line, replace the last parameter (`ethers`) with `tokenSet`
+  async function displayZkSyncBalance (wallet, tokenSet) {
     const state = await wallet.getAccountState()
     
+    // declare constant committedeBalances
+    const committedBalances = state.committed.balances
+
+    // declare constant verifiedbalancees
+    const verifiedBalances = state.verified.balances 
+
+    // write a for..in loop to iterate over commited balances 
+    for (const property in committedBalances) {
+        console.log(`Committed ${property} balance for ${wallet.address()}: ${tokenSet.formatToken(property, committedBalances[property])}`)
+    }
+
+    // write a for..in loop to iterate over veerfied balances 
+    for (const property in verifiedBalances) {
+        console.log(`Verified ${property} balance for ${wallet.address()}: ${tokenSet.formatToken(property, verifiedBalances[property])}`)
+    }
+
   }
   
   module.exports = {
