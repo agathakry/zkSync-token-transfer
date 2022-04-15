@@ -2,14 +2,15 @@
 Project built using the ZK rollup architecture zkSync for transfering ERC270 tokens between "Bob" and "Alice". This repo is based on the [CryptoZombies Lesson 17 and 18](https://cryptozombies.io/). zkSync uses zk-SNARKS (Zero-Knowledge Succint Non-Interactive Arguments of Knowledge) which allow "Alice" (prover) to prove to "Bob" (verifier) that she knows something to be true, without conveying any other information. 
 
 <p align="center">
-<img src=https://github.com/agathakry/zkSync/blob/main/assets/zksynclogo.png width="30%">
-</p>
-<p align="center">
 <img src=https://github.com/agathakry/zkSync/blob/main/assets/bob%20alice.jpg width="30%">
 </p>
 
-- Do not deploy on mainnet - 
+!Do not deploy on mainnet!
+
 ## Introduction 
+<p align="center">
+<img src=https://github.com/agathakry/zkSync/blob/main/assets/zksynclogo.png width="30%">
+</p>
 [zkSync](https://zksync.io/) is a L2 scaling solution for the Ethereum Network in which all funds are held by smart contract on Ethereum, while computations and storage are performed off-chain. 
 
 ## Requirements 
